@@ -238,77 +238,78 @@ export default function Home() {
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "48px 40px 120px" }}>
 
         {/* ── HERO ── */}
-        <div style={{
-          display: "flex", alignItems: "flex-start", gap: 24,
-          paddingBottom: 40, borderBottom: S.divider, marginBottom: 0,
-        }}>
-          <div style={{
-            width: 110, height: 110, borderRadius: 8, flexShrink: 0,
-            background: "#111", display: "flex", alignItems: "center",
-            justifyContent: "center", fontSize: 28, fontWeight: 700, color: "#fff",
-          }}>
-            {personalInfo.initials}
-          </div>
+<div style={{
+  display: "flex", alignItems: "flex-start", gap: 20,
+  paddingBottom: 40, borderBottom: S.divider, marginBottom: 0,
+  flexWrap: "wrap",
+}}>
+  <div style={{
+    width: 80, height: 80, borderRadius: 10, flexShrink: 0,
+    background: "#111", display: "flex", alignItems: "center",
+    justifyContent: "center", fontSize: 24, fontWeight: 700, color: "#fff",
+  }}>
+    {personalInfo.initials}
+  </div>
 
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)", marginBottom: 4, lineHeight: 1.1 }}>
-              {personalInfo.name}
-            </h1>
-            <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 5 }}>
-              📍 {personalInfo.location}
-            </p>
-            <p style={{ fontSize: 16, color: "var(--sub)", marginBottom: 18 }}>
-              {personalInfo.title} · {personalInfo.subtitle}
-            </p>
+  <div style={{ flex: 1, minWidth: 0 }}>
+    <h1 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)", marginBottom: 2, lineHeight: 1.15 }}>
+      {personalInfo.name}
+    </h1>
+    <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 3 }}>
+      📍 {personalInfo.location}
+    </p>
+    <p style={{ fontSize: 14, color: "var(--sub)", marginBottom: 12 }}>
+      {personalInfo.title} · {personalInfo.subtitle}
+    </p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                fontSize: 12, fontWeight: 500, padding: "6px 12px", borderRadius: 7,
-                background: theme === "dark" ? "#0c1f17" : "#f0faf5",
-                border: `1px solid ${theme === "dark" ? "#152a1e" : "#c3e6d3"}`,
-                color: "#2e7d52",
-              }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2e7d52", display: "inline-block", animation: "pulse 2s infinite" }} />
-                Open to Work
-              </span>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+      <span style={{
+        display: "inline-flex", alignItems: "center", gap: 6,
+        fontSize: 12, fontWeight: 500, padding: "5px 10px", borderRadius: 7,
+        background: theme === "dark" ? "#0c1f17" : "#f0faf5",
+        border: `1px solid ${theme === "dark" ? "#152a1e" : "#c3e6d3"}`,
+        color: "#2e7d52",
+      }}>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2e7d52", display: "inline-block", animation: "pulse 2s infinite" }} />
+        Open to Work
+      </span>
 
-              <button onClick={() => setContactOpen(true)} style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                fontSize: 13, fontWeight: 600, padding: "6px 16px", borderRadius: 7,
-                background: "var(--text)", color: "var(--bg)", border: "none", cursor: "pointer",
-              }}>
-                ✉ Send Email
-              </button>
+      <button onClick={() => setContactOpen(true)} style={{
+        display: "inline-flex", alignItems: "center", gap: 6,
+        fontSize: 12, fontWeight: 600, padding: "5px 14px", borderRadius: 7,
+        background: "var(--text)", color: "var(--bg)", border: "none", cursor: "pointer",
+      }}>
+        ✉ Send Email
+      </button>
 
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" style={{
-                display: "inline-flex", alignItems: "center", gap: 5,
-                fontSize: 13, padding: "6px 12px", borderRadius: 7,
-                background: "var(--surface)", border: "1px solid var(--border)",
-                color: "var(--sub)", textDecoration: "none",
-              }}>
-                ⌨ GitHub
-              </a>
+      <a href={personalInfo.github} target="_blank" rel="noreferrer" style={{
+        display: "inline-flex", alignItems: "center", gap: 5,
+        fontSize: 12, padding: "5px 10px", borderRadius: 7,
+        background: "var(--surface)", border: "1px solid var(--border)",
+        color: "var(--sub)", textDecoration: "none",
+      }}>
+        ⌨ GitHub
+      </a>
 
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" style={{
-                display: "inline-flex", alignItems: "center", gap: 5,
-                fontSize: 13, padding: "6px 12px", borderRadius: 7,
-                background: "var(--surface)", border: "1px solid var(--border)",
-                color: "var(--sub)", textDecoration: "none",
-              }}>
-                💼 LinkedIn
-              </a>
+      <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" style={{
+        display: "inline-flex", alignItems: "center", gap: 5,
+        fontSize: 12, padding: "5px 10px", borderRadius: 7,
+        background: "var(--surface)", border: "1px solid var(--border)",
+        color: "var(--sub)", textDecoration: "none",
+      }}>
+        💼 LinkedIn
+      </a>
 
-              <button onClick={toggle} style={{
-                fontSize: 13, padding: "6px 12px", borderRadius: 7,
-                background: "var(--surface)", border: "1px solid var(--border)",
-                color: "var(--sub)", cursor: "pointer", marginLeft: "auto",
-              }}>
-                {theme === "dark" ? "☀ Light" : "☾ Dark"}
-              </button>
-            </div>
-          </div>
-        </div>
+      <button onClick={toggle} style={{
+        fontSize: 12, padding: "5px 10px", borderRadius: 7,
+        background: "var(--surface)", border: "1px solid var(--border)",
+        color: "var(--sub)", cursor: "pointer",
+      }}>
+        {theme === "dark" ? "☀ Light" : "☾ Dark"}
+      </button>
+    </div>
+  </div>
+</div>
 
         {/* ── TWO-COLUMN GRID ── */}
         <div className="portfolio-grid" style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: "0 60px", paddingTop: 44 }}>
@@ -474,6 +475,9 @@ export default function Home() {
         }
         button:hover { opacity: 0.85; }
         a:hover { opacity: 0.75; }
+        @media (max-width: 480px) {
+  .portfolio-grid { padding-top: 32px !important; }
+}
       `}</style>
     </main>
   );
