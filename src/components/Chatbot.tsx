@@ -12,18 +12,18 @@ interface ChatbotProps {
   onClose: () => void;
 }
 
-const SUGGESTED = ["His skills", "Recent projects", "Work experience", "How to contact him"];
+const SUGGESTED = ["What's your tech stack?", "Tell me about your projects", "Are you open to work?", "How can I reach you?"];
 
 export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! 👋 I'm JC's AI assistant. Ask me anything about his skills, projects, or experience!",
+      content: "Hey! 👋 I'm JC. Feel free to ask me anything — my skills, projects, experience, or if you're looking to work together!",
     },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("Thinking...");
+  const [loadingText, setLoadingText] = useState("JC is typing...");
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -38,17 +38,17 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
   }, [isOpen]);
 
   const startLoadingMessages = () => {
-    setLoadingText("Thinking...");
-    const t1 = setTimeout(() => setLoadingText("Waking up the AI server..."), 5000);
-    const t2 = setTimeout(() => setLoadingText("Server was sleeping, almost there..."), 15000);
-    const t3 = setTimeout(() => setLoadingText("Still loading, thanks for your patience..."), 30000);
+    setLoadingText("JC is typing...");
+    const t1 = setTimeout(() => setLoadingText("Give me a sec..."), 5000);
+    const t2 = setTimeout(() => setLoadingText("Just waking up, one moment..."), 15000);
+    const t3 = setTimeout(() => setLoadingText("Almost there, hang tight!"), 30000);
     timersRef.current = [t1, t2, t3];
   };
 
   const stopLoadingMessages = () => {
     timersRef.current.forEach(clearTimeout);
     timersRef.current = [];
-    setLoadingText("Thinking...");
+    setLoadingText("JC is typing...");
   };
 
   const send = async (text?: string) => {
@@ -77,11 +77,10 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
       });
 
       clearTimeout(timeout);
-
       if (!res.ok) throw new Error(`${res.status}`);
 
       const data = await res.json();
-      const reply = data.reply ?? "Sorry, something went wrong. Please try again.";
+      const reply = data.reply ?? "Sorry, something went wrong. Try again!";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (err: unknown) {
       const isTimeout = err instanceof Error && err.name === "AbortError";
@@ -90,8 +89,8 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
         {
           role: "assistant",
           content: isTimeout
-            ? "⏱️ The server took too long to respond — it was likely sleeping. Please try again, it should be faster now!"
-            : "❌ Couldn't reach the server. Please check your connection and try again.",
+            ? "⏱️ Took too long to respond — I was probably sleeping 😅 Try again, should be faster now!"
+            : "❌ Something went wrong on my end. Check your connection and try again!",
         },
       ]);
     } finally {
@@ -121,24 +120,15 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
         .chat-send-btn:hover:not(:disabled) { opacity: 0.85; }
       `}</style>
 
-      <div
-        style={{
-          position: "fixed",
-          bottom: "24px",
-          right: "24px",
-          zIndex: 9999,
-          width: "340px",
-          maxWidth: "calc(100vw - 32px)",
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: "12px",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
-          overflow: "hidden",
-          border: "1px solid var(--border)",
-          background: "var(--bg)",
-          animation: "chatFadeIn 0.2s ease",
-        }}
-      >
+      <div style={{
+        position: "fixed", bottom: "24px", right: "24px", zIndex: 9999,
+        width: "340px", maxWidth: "calc(100vw - 32px)",
+        display: "flex", flexDirection: "column",
+        borderRadius: "12px", boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+        overflow: "hidden", border: "1px solid var(--border)",
+        background: "var(--bg)", animation: "chatFadeIn 0.2s ease",
+      }}>
+
         {/* ── Header ── */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -146,30 +136,35 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
           background: "var(--surface)", flexShrink: 0,
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{
-              width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 11, fontWeight: 700,
-              background: "var(--text)", color: "var(--bg)",
-            }}>
-              JC
-            </div>
-            <div>
-              <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", margin: 0, lineHeight: 1.2 }}>
-                Ask JC&apos;s Assistant
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
-                <span style={{
-                  width: 6, height: 6, borderRadius: "50%", flexShrink: 0,
-                  background: loading ? "#f59e0b" : "#22c55e",
-                  display: "inline-block",
-                }} />
-                <p style={{ fontSize: 11, color: "var(--muted)", margin: 0 }}>
-                  {loading ? loadingText : "AI-powered · n8n"}
-                </p>
+            {/* Avatar */}
+            <div style={{ position: "relative", flexShrink: 0 }}>
+              <div style={{
+                width: 34, height: 34, borderRadius: "50%",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 13, fontWeight: 700,
+                background: "var(--text)", color: "var(--bg)",
+              }}>
+                JC
               </div>
+              {/* Online dot */}
+              <span style={{
+                position: "absolute", bottom: 0, right: 0,
+                width: 9, height: 9, borderRadius: "50%",
+                background: loading ? "#f59e0b" : "#22c55e",
+                border: "2px solid var(--surface)",
+              }} />
+            </div>
+
+            <div>
+              <p style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", margin: 0, lineHeight: 1.2 }}>
+                JC Dizon
+              </p>
+              <p style={{ fontSize: 11, color: "var(--muted)", margin: "2px 0 0" }}>
+                {loading ? loadingText : "Junior Developer · Usually replies fast"}
+              </p>
             </div>
           </div>
+
           <button className="chat-close-btn" onClick={onClose} style={{
             fontSize: 12, padding: "4px 8px", borderRadius: 6, cursor: "pointer",
             color: "var(--sub)", background: "var(--border)", border: "none",
@@ -187,14 +182,26 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
             <div key={i} style={{
               display: "flex",
               justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
+              alignItems: "flex-end", gap: 6,
             }}>
+              {/* JC avatar on assistant messages */}
+              {msg.role === "assistant" && (
+                <div style={{
+                  width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 8, fontWeight: 700,
+                  background: "var(--text)", color: "var(--bg)",
+                }}>
+                  JC
+                </div>
+              )}
               <div style={{
-                maxWidth: "88%", padding: "8px 12px",
+                maxWidth: "80%", padding: "8px 12px",
                 fontSize: 13, lineHeight: 1.6,
                 whiteSpace: "pre-wrap", wordBreak: "break-word",
                 ...(msg.role === "user"
                   ? { background: "var(--text)", color: "var(--bg)", borderRadius: "14px 14px 4px 14px" }
-                  : { background: "var(--surface)", color: "var(--sub)", border: "1px solid var(--border)", borderRadius: "14px 14px 14px 4px" }
+                  : { background: "var(--surface)", color: "var(--sub)", border: "1px solid var(--border)", borderRadius: "4px 14px 14px 14px" }
                 ),
               }}>
                 {msg.content}
@@ -204,24 +211,34 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
 
           {/* Typing indicator */}
           {loading && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 5, alignItems: "flex-start" }}>
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 6 }}>
               <div style={{
-                padding: "10px 14px",
-                background: "var(--surface)", border: "1px solid var(--border)",
-                borderRadius: "14px 14px 14px 4px",
-                display: "inline-flex", gap: 4, alignItems: "center",
+                width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 8, fontWeight: 700,
+                background: "var(--text)", color: "var(--bg)",
               }}>
-                {[0, 200, 400].map((delay) => (
-                  <span key={delay} style={{
-                    display: "inline-block", width: 6, height: 6, borderRadius: "50%",
-                    background: "var(--muted)",
-                    animation: `typingBounce 1.2s infinite ${delay}ms`,
-                  }} />
-                ))}
+                JC
               </div>
-              <p style={{ fontSize: 11, color: "var(--dim)", margin: 0, paddingLeft: 4 }}>
-                {loadingText}
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <div style={{
+                  padding: "10px 14px",
+                  background: "var(--surface)", border: "1px solid var(--border)",
+                  borderRadius: "4px 14px 14px 14px",
+                  display: "inline-flex", gap: 4, alignItems: "center",
+                }}>
+                  {[0, 200, 400].map((delay) => (
+                    <span key={delay} style={{
+                      display: "inline-block", width: 6, height: 6, borderRadius: "50%",
+                      background: "var(--muted)",
+                      animation: `typingBounce 1.2s infinite ${delay}ms`,
+                    }} />
+                  ))}
+                </div>
+                <p style={{ fontSize: 10, color: "var(--dim)", margin: 0, paddingLeft: 4 }}>
+                  {loadingText}
+                </p>
+              </div>
             </div>
           )}
         </div>
@@ -246,7 +263,7 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
             fontSize: 10, color: "var(--dim)", textAlign: "center",
             padding: "0 16px 8px", margin: 0, lineHeight: 1.4,
           }}>
-            ⚡ First response may take ~30s while the server wakes up
+            ⚡ First reply may take ~30s to wake up
           </p>
         )}
 
@@ -261,7 +278,7 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && !loading && send()}
-            placeholder={loading ? "Waiting for response..." : "Ask me anything..."}
+            placeholder={loading ? "JC is replying..." : "Message JC..."}
             disabled={loading}
             style={{
               flex: 1, padding: "8px 12px", borderRadius: 8,

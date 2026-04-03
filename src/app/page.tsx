@@ -157,7 +157,7 @@ function AchievementsSection() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.opacity = "1"; }}
           >
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10, minWidth: 0 }}>
-              <span style={{ fontSize: 13, flexShrink: 0, marginTop: 2 }}>{cert.icon}</span>
+           
               <div>
                 <p style={{ fontSize: 13, fontWeight: 600, color: "var(--sub)", lineHeight: 1.4, margin: 0 }}>
                   {cert.title}
