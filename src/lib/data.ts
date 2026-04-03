@@ -9,7 +9,7 @@ export const personalInfo = {
   email: "johncarlovdizon@gmail.com",
   github: "https://github.com/johncarlo-dizon",
   linkedin: "https://linkedin.com/in/jcdizon",
-  portfolio: "https://jc-portfolio-orpin.vercel.app/",
+  portfolio: "https://johncarlodizon-silk.vercel.app/",
   available: true,
   about: [
     "I'm a junior developer specializing in building scalable web apps, mobile experiences, and desktop systems — from backend APIs to Play Store deployments. I work on full-stack web, cross-platform mobile, and biometric-integrated enterprise systems.",
