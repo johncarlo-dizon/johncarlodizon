@@ -6,7 +6,7 @@ import ContactModal from "@/components/ContactModal";
 import Chatbot from "@/components/Chatbot";
 import {
   personalInfo, skills, projects, experience,
-  education, achievements, softSkills, forteItems,
+  education, softSkills, forteItems, certificates,
 } from "@/lib/data";
 
 const S = {
@@ -109,6 +109,103 @@ function TechStack({
         );
       })}
     </div>
+  );
+}
+
+function AchievementsSection() {
+  const DEFAULT_COUNT = 3;
+  const [showAll, setShowAll] = useState(false);
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  const visible = showAll ? certificates : certificates.filter((c) => c.featured);
+  const hiddenCount = certificates.filter((c) => !c.featured).length;
+
+  return (
+    <section>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+        <SectionTitle>Achievements</SectionTitle>
+        <button
+          onClick={() => setShowAll((v) => !v)}
+          style={{
+            fontSize: 11, fontWeight: 500, color: "var(--muted)",
+            background: "none", border: "none", cursor: "pointer",
+            padding: 0, marginBottom: 16, transition: "color 0.15s",
+            display: "inline-flex", alignItems: "center", gap: 4,
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--text)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--muted)"; }}
+        >
+          {showAll
+            ? <>show less <span style={{ fontSize: 10, opacity: 0.7 }}>↑</span></>
+            : <>{`+${hiddenCount}`} more <span style={{ fontSize: 10, opacity: 0.7 }}>↓</span></>}
+        </button>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {visible.map((cert, i) => (
+          <div
+            key={cert.title}
+            onClick={() => setLightbox(cert.image)}
+            style={{
+              display: "flex", alignItems: "flex-start", justifyContent: "space-between",
+              gap: 10, padding: "10px 0", cursor: "pointer",
+              borderTop: i === 0 ? "none" : S.divider,
+              marginTop: i === 0 ? 4 : 0,
+              transition: "opacity 0.15s",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.opacity = "0.6"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.opacity = "1"; }}
+          >
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10, minWidth: 0 }}>
+              <span style={{ fontSize: 13, flexShrink: 0, marginTop: 2 }}>{cert.icon}</span>
+              <div>
+                <p style={{ fontSize: 13, fontWeight: 600, color: "var(--sub)", lineHeight: 1.4, margin: 0 }}>
+                  {cert.title}
+                </p>
+                <p style={{ fontSize: 11, color: "var(--dim)", marginTop: 2, marginBottom: 0 }}>
+                  {cert.period}
+                </p>
+              </div>
+            </div>
+            <span style={{ fontSize: 11, color: "var(--dim)", flexShrink: 0, marginTop: 3 }}>↗</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(null)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 100,
+            background: "rgba(0,0,0,0.85)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: 24,
+          }}
+        >
+          <img
+            src={lightbox}
+            alt="Certificate"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: "90vw", maxHeight: "88vh",
+              borderRadius: 10, boxShadow: "0 8px 48px rgba(0,0,0,0.6)",
+              objectFit: "contain",
+            }}
+          />
+          <button
+            onClick={() => setLightbox(null)}
+            style={{
+              position: "fixed", top: 20, right: 24,
+              background: "none", border: "none", color: "#fff",
+              fontSize: 24, cursor: "pointer", opacity: 0.7, lineHeight: 1,
+            }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -334,28 +431,7 @@ export default function Home() {
             </section>
 
             {/* ACHIEVEMENTS */}
-            <section>
-              <SectionTitle>Achievements</SectionTitle>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {achievements.map((ach, i) => (
-                  <div key={ach.title} style={{
-                    display: "flex", alignItems: "flex-start", gap: 10, padding: "11px 0",
-                    borderTop: i === 0 ? "none" : S.divider,
-                    marginTop: i === 0 ? 4 : 0,
-                  }}>
-                    <span style={{ fontSize: 13, flexShrink: 0, marginTop: 2 }}>{ach.icon}</span>
-                    <div>
-                      <p style={{ fontSize: 13, fontWeight: 600, color: "var(--sub)", lineHeight: 1.4, margin: 0 }}>
-                        {ach.title}
-                      </p>
-                      <p style={{ fontSize: 11, color: "var(--dim)", marginTop: 2, marginBottom: 0 }}>
-                        {ach.period}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <AchievementsSection />
 
             {/* SOFT SKILLS */}
             <section>

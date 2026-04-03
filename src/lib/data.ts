@@ -209,6 +209,106 @@ export const softSkills = [
   "Initiative", "Critical Thinking", "Accountability", "Self-directed Learning",
 ];
 
+// featured: true = shown by default; false = shown on "view all"
+export const certificates = [
+  {
+    title: "Rank 9 Overall in the College",
+    period: "SY 2024–2025",
+    image: "/certificates/overallrank9.jpeg",
+    featured: true,
+  },
+  {
+    title: "4th Place — CodeChum National Programming Challenge 2025, Season 2",
+    period: "2025",
+    image: "/certificates/4th Place — CodeChum National Programming Challenge 2025, Season 2.png",
+    featured: true,
+  },
+  {
+    title: "Top 1 Performer in the Department",
+    period: "SY 2024–2025",
+    image: "/certificates/seclstop1.jpeg",
+    featured: false,
+  },
+  {
+    title: "Top 3 Performer in the Department",
+    period: "SY 2022–2023",
+    image: "/certificates/top3bestperformerindepartment.jpeg",
+    featured: false,
+  },
+  {
+    title: "Overall Best Project",
+    period: "SY 2021–2022",
+    image: "/certificates/overallbestproject.jpeg",
+    featured: false,
+  },
+  {
+    title: "Best Project for Community Extension",
+    period: "SY 2021–2022",
+    image: "/certificates/bestprojectforcommunityextension.jpeg",
+    featured: false,
+  },
+  {
+    title: "Best in System",
+    period: "SY 2021–2022",
+    image: "/certificates/bestinsystem.jpeg",
+    featured: false,
+  },
+  {
+    title: "Best Presenter",
+    period: "SY 2021–2022",
+    image: "/certificates/bestpresenter.jpeg",
+    featured: false,
+  },
+  {
+    title: "Best in Research Paper",
+    period: "SY 2021–2022",
+    image: "/certificates/bestinresearchpaper.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2023–2024, 1st Sem",
+    period: "2023–2024",
+    image: "/certificates/pl2023-2024firstsem.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2023–2024, 2nd Sem",
+    period: "2023–2024",
+    image: "/certificates/pl2023-2024secondsem.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2024–2025, 1st Sem",
+    period: "2024–2025",
+    image: "/certificates/pl2024-2025firstsem.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2024–2025, 1st Sem (v2)",
+    period: "2024–2025",
+    image: "/certificates/pl2024-2025firstsemv2.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2024–2025, 2nd Sem",
+    period: "2024–2025",
+    image: "/certificates/pl2024-2025secondsem.jpeg",
+    featured: false,
+  },
+  {
+    title: "President's Lister — 2024–2025, 2nd Sem (v2)",
+    period: "2024–2025",
+    image: "/certificates/pl2024-2025secondsemv2.jpeg",
+    featured: false,
+  },
+  {
+    title: "Certificate of Recognition — Embracing the Light of Innovation",
+    period: "2024",
+    image: "/certificates/cerofrecog_embracingthelightofinnovation.jpeg",
+    featured: false,
+  },
+];
+
 export const chatbotContext = `
 You are JC Dizon's portfolio assistant. Answer questions about JC briefly and professionally.
 
@@ -246,7 +346,7 @@ Key Projects:
 - Point of Sale System (PHP + MySQL)
 - Flutter Mobile Suite — 5 apps (Ordering, Recipe, Note, Contacts, Quote)
 
-Achievements: President's Lister, Top 1 in Department, Rank 9 in College, Overall Best Project, Best Project for Community Extension, Best in System, Best Presenter, Best in Research Paper
+Achievements: President's Lister, Top 1 in Department, Rank 9 in College, Overall Best Project, Best Project for Community Extension, Best in System, Best Presenter, Best in Research Paper, 4th Place CodeChum National Programming Challenge 2025 Season 2
 
 Keep answers concise (2-4 sentences max). Be friendly and professional. If asked about hiring or contact, direct them to use the contact form on the page or email johncarlovictoriadizon@gmail.com.
 `;
