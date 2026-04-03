@@ -21,12 +21,10 @@ const PROJECTS_DEFAULT = 4;
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2
-      style={{
-        fontSize: 20, fontWeight: 700, marginBottom: 16, marginTop: 0,
-        color: "var(--text)", letterSpacing: "-0.015em", lineHeight: 1.2,
-      }}
-    >
+    <h2 style={{
+      fontSize: 20, fontWeight: 700, marginBottom: 16, marginTop: 0,
+      color: "var(--text)", letterSpacing: "-0.015em", lineHeight: 1.2,
+    }}>
       {children}
     </h2>
   );
@@ -48,8 +46,6 @@ function TechStack({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-
-      {/* Section header with inline toggle */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: -4 }}>
         <SectionTitle>Tech Stack</SectionTitle>
         <button
@@ -61,49 +57,32 @@ function TechStack({
             fontSize: 12, fontWeight: 500,
             color: hovered ? "var(--text)" : "var(--muted)",
             background: "none", border: "none", cursor: "pointer",
-            padding: 0, marginBottom: 16,
-            transition: "color 0.15s",
-            letterSpacing: "0.01em",
+            padding: 0, marginBottom: 16, transition: "color 0.15s",
           }}
         >
-          {showAll ? (
-            <>show less <span style={{ fontSize: 10, opacity: 0.7 }}>↑</span></>
-          ) : (
-            <>{`+${hiddenCount}`} more <span style={{ fontSize: 10, opacity: 0.7 }}>↓</span></>
-          )}
+          {showAll ? <>show less <span style={{ fontSize: 10, opacity: 0.7 }}>↑</span></>
+                   : <>{`+${hiddenCount}`} more <span style={{ fontSize: 10, opacity: 0.7 }}>↓</span></>}
         </button>
       </div>
 
       {skills.map((group) => {
         const forte   = group.items.filter((item) => forteItems.includes(item));
         const visible = showAll || forte.length === 0 ? group.items : forte;
-
         return (
           <div key={group.category}>
-            <h3 style={{
-              fontSize: 14, fontWeight: 700,
-              color: "var(--text)", margin: "0 0 10px 0",
-            }}>
+            <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", margin: "0 0 10px 0" }}>
               {group.category}
             </h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {visible.map((item) => {
-                const isForte = forteItems.includes(item);
-                return (
-                  <span
-                    key={item}
-                    style={{
-                      fontSize: 13, padding: "4px 12px", borderRadius: 6,
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      color: "var(--sub)",
-                      fontWeight: 400,
-                    }}
-                  >
-                    {item}
-                  </span>
-                );
-              })}
+              {visible.map((item) => (
+                <span key={item} style={{
+                  fontSize: 13, padding: "4px 12px", borderRadius: 6,
+                  background: "var(--surface)", border: "1px solid var(--border)",
+                  color: "var(--sub)", fontWeight: 400,
+                }}>
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         );
@@ -113,12 +92,18 @@ function TechStack({
 }
 
 function AchievementsSection() {
-  const DEFAULT_COUNT = 3;
-  const [showAll, setShowAll] = useState(false);
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [showAll, setShowAll]         = useState(false);
+  // lightbox now holds an array of image paths
+  const [lightbox, setLightbox]       = useState<string[] | null>(null);
+  const [lightboxIdx, setLightboxIdx] = useState(0);
 
-  const visible = showAll ? certificates : certificates.filter((c) => c.featured);
+  const visible    = showAll ? certificates : certificates.filter((c) => c.featured);
   const hiddenCount = certificates.filter((c) => !c.featured).length;
+
+  const openLightbox = (images: string[]) => {
+    setLightbox(images);
+    setLightboxIdx(0);
+  };
 
   return (
     <section>
@@ -145,26 +130,35 @@ function AchievementsSection() {
         {visible.map((cert, i) => (
           <div
             key={cert.title}
-            onClick={() => setLightbox(cert.image)}
+            onClick={() => openLightbox(cert.images)}
             style={{
               display: "flex", alignItems: "flex-start", justifyContent: "space-between",
               gap: 10, padding: "10px 0", cursor: "pointer",
               borderTop: i === 0 ? "none" : S.divider,
-              marginTop: i === 0 ? 4 : 0,
-              transition: "opacity 0.15s",
+              marginTop: i === 0 ? 4 : 0, transition: "opacity 0.15s",
             }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.opacity = "0.6"; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.opacity = "1"; }}
           >
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10, minWidth: 0 }}>
-           
               <div>
                 <p style={{ fontSize: 13, fontWeight: 600, color: "var(--sub)", lineHeight: 1.4, margin: 0 }}>
                   {cert.title}
                 </p>
-                <p style={{ fontSize: 11, color: "var(--dim)", marginTop: 2, marginBottom: 0 }}>
-                  {cert.period}
-                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}>
+                  <p style={{ fontSize: 11, color: "var(--dim)", margin: 0 }}>
+                    {cert.period}
+                  </p>
+                  {cert.images.length > 1 && (
+                    <span style={{
+                      fontSize: 10, color: "var(--muted)",
+                      background: "var(--surface)", border: "1px solid var(--border)",
+                      padding: "1px 6px", borderRadius: 4,
+                    }}>
+                      {cert.images.length} photos
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
             <span style={{ fontSize: 11, color: "var(--dim)", flexShrink: 0, marginTop: 3 }}>↗</span>
@@ -172,27 +166,49 @@ function AchievementsSection() {
         ))}
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox — supports multiple images with prev/next */}
       {lightbox && (
         <div
           onClick={() => setLightbox(null)}
           style={{
             position: "fixed", inset: 0, zIndex: 100,
-            background: "rgba(0,0,0,0.85)",
+            background: "rgba(0,0,0,0.9)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            padding: 24,
+            padding: 24, flexDirection: "column", gap: 16,
           }}
         >
-          <img
-            src={lightbox}
-            alt="Certificate"
+          {/* Images — side by side if multiple */}
+          <div
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: "90vw", maxHeight: "88vh",
-              borderRadius: 10, boxShadow: "0 8px 48px rgba(0,0,0,0.6)",
-              objectFit: "contain",
+              display: "flex", gap: 12, alignItems: "center", justifyContent: "center",
+              maxWidth: "92vw", maxHeight: "80vh",
             }}
-          />
+          >
+            {lightbox.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Certificate ${idx + 1}`}
+                style={{
+                  maxHeight: "78vh",
+                  maxWidth: lightbox.length > 1 ? "46vw" : "88vw",
+                  borderRadius: 10,
+                  boxShadow: "0 8px 48px rgba(0,0,0,0.6)",
+                  objectFit: "contain",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Caption */}
+          {lightbox.length > 1 && (
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, margin: 0 }}>
+              Click anywhere outside to close
+            </p>
+          )}
+
+          {/* Close button */}
           <button
             onClick={() => setLightbox(null)}
             style={{
@@ -215,9 +231,7 @@ export default function Home() {
   const [chatOpen, setChatOpen]       = useState(false);
   const [showAllProjects, setShowAll] = useState(false);
 
-  const visibleProjects = showAllProjects
-    ? projects
-    : projects.slice(0, PROJECTS_DEFAULT);
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, PROJECTS_DEFAULT);
 
   return (
     <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
@@ -228,7 +242,6 @@ export default function Home() {
           display: "flex", alignItems: "flex-start", gap: 24,
           paddingBottom: 40, borderBottom: S.divider, marginBottom: 0,
         }}>
-          {/* Avatar */}
           <div style={{
             width: 110, height: 110, borderRadius: 8, flexShrink: 0,
             background: "#111", display: "flex", alignItems: "center",
@@ -237,7 +250,6 @@ export default function Home() {
             {personalInfo.initials}
           </div>
 
-          {/* Info */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)", marginBottom: 4, lineHeight: 1.1 }}>
               {personalInfo.name}
@@ -249,7 +261,6 @@ export default function Home() {
               {personalInfo.title} · {personalInfo.subtitle}
             </p>
 
-            {/* Buttons */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
@@ -300,10 +311,7 @@ export default function Home() {
         </div>
 
         {/* ── TWO-COLUMN GRID ── */}
-        <div
-          className="portfolio-grid"
-          style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: "0 60px", paddingTop: 44 }}
-        >
+        <div className="portfolio-grid" style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: "0 60px", paddingTop: 44 }}>
 
           {/* ── MAIN COLUMN ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
@@ -313,9 +321,7 @@ export default function Home() {
               <SectionTitle>About</SectionTitle>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {personalInfo.about.map((p, i) => (
-                  <p key={i} style={{ fontSize: 15, lineHeight: 1.75, color: "var(--sub)", margin: 0 }}>
-                    {p}
-                  </p>
+                  <p key={i} style={{ fontSize: 15, lineHeight: 1.75, color: "var(--sub)", margin: 0 }}>{p}</p>
                 ))}
               </div>
             </section>
@@ -345,9 +351,7 @@ export default function Home() {
                       <span style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", letterSpacing: "-0.01em" }}>
                         {proj.title}
                       </span>
-                      <span style={{ fontSize: 12, color: "var(--dim)", flexShrink: 0 }}>
-                        {proj.category}
-                      </span>
+                      <span style={{ fontSize: 12, color: "var(--dim)", flexShrink: 0 }}>{proj.category}</span>
                     </div>
                     <p style={{ fontSize: 14, lineHeight: 1.65, color: "var(--sub)", margin: "0 0 10px 0" }}>
                       {proj.description}
@@ -383,7 +387,6 @@ export default function Home() {
                   : <>{`+${projects.length - PROJECTS_DEFAULT}`} more projects <span style={{ fontSize: 10, opacity: 0.7 }}>↓</span></>}
               </button>
             </section>
-
           </div>
 
           {/* ── SIDEBAR ── */}
@@ -404,15 +407,9 @@ export default function Home() {
                       marginTop: 5, background: "var(--border)", border: "1px solid var(--dim)",
                     }} />
                     <div>
-                      <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 2, marginTop: 0 }}>
-                        {exp.role}
-                      </p>
-                      <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 1, marginTop: 0 }}>
-                        {exp.company}
-                      </p>
-                      <p style={{ fontSize: 12, color: "var(--dim)", margin: 0 }}>
-                        {exp.period}
-                      </p>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 2, marginTop: 0 }}>{exp.role}</p>
+                      <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 1, marginTop: 0 }}>{exp.company}</p>
+                      <p style={{ fontSize: 12, color: "var(--dim)", margin: 0 }}>{exp.period}</p>
                     </div>
                   </div>
                 ))}
@@ -422,9 +419,7 @@ export default function Home() {
             {/* EDUCATION */}
             <section>
               <SectionTitle>Education</SectionTitle>
-              <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 3, marginTop: 0 }}>
-                {education.degree}
-              </p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 3, marginTop: 0 }}>{education.degree}</p>
               <p style={{ fontSize: 13, color: "var(--muted)", margin: "2px 0" }}>{education.school}</p>
               <p style={{ fontSize: 13, color: "var(--muted)", margin: "2px 0" }}>{education.address}</p>
               <p style={{ fontSize: 12, color: "var(--dim)", marginTop: 3 }}>{education.period}</p>
@@ -448,24 +443,20 @@ export default function Home() {
                 ))}
               </div>
             </section>
-
           </div>
         </div>
       </div>
 
-      {/* ── FLOATING CHAT BUTTON ── */}
+      {/* FLOATING CHAT BUTTON */}
       {!chatOpen && (
-        <button
-          onClick={() => setChatOpen(true)}
-          style={{
-            position: "fixed", bottom: 24, right: 24, zIndex: 40,
-            display: "flex", alignItems: "center", gap: 8,
-            padding: "10px 18px", borderRadius: 12,
-            background: "var(--text)", color: "var(--bg)",
-            fontSize: 14, fontWeight: 600, border: "none", cursor: "pointer",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
-          }}
-        >
+        <button onClick={() => setChatOpen(true)} style={{
+          position: "fixed", bottom: 24, right: 24, zIndex: 40,
+          display: "flex", alignItems: "center", gap: 8,
+          padding: "10px 18px", borderRadius: 12,
+          background: "var(--text)", color: "var(--bg)",
+          fontSize: 14, fontWeight: 600, border: "none", cursor: "pointer",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
+        }}>
           💬 Ask JC
         </button>
       )}
@@ -479,10 +470,7 @@ export default function Home() {
           50% { opacity: 0.4; }
         }
         @media (max-width: 768px) {
-          .portfolio-grid {
-            grid-template-columns: 1fr !important;
-            gap: 0 !important;
-          }
+          .portfolio-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
         }
         button:hover { opacity: 0.85; }
         a:hover { opacity: 0.75; }

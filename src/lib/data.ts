@@ -13,15 +13,11 @@ export const personalInfo = {
   available: true,
   about: [
     "I'm a junior developer specializing in building scalable web apps, mobile experiences, and desktop systems — from backend APIs to Play Store deployments. I work on full-stack web, cross-platform mobile, and biometric-integrated enterprise systems.",
-
-"I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used for HR, payroll, and attendance tracking.",
-
-"Currently finishing my BS in Information Technology at Holy Cross College. I'm continuously learning and improving my skills, and I’m eager to grow as a developer while gaining more real-world experience."
-,
+    "I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used for HR, payroll, and attendance tracking.",
+    "Currently finishing my BS in Information Technology at Holy Cross College. I'm continuously learning and improving my skills, and I'm eager to grow as a developer while gaining more real-world experience.",
   ],
 };
 
-// Items listed here will be highlighted as forte
 export const forteItems = [
   "Java", "Flutter", "Laravel", "Next.js", "Node.js", "Git / GitHub", "TypeScript", "Postman",
 ];
@@ -50,7 +46,6 @@ export const skills = [
 ];
 
 export const projects = [
-  // ── Desktop (Java Swing) ──────────────────────────────────────────
   {
     title: "Intern Attendance Management System",
     description:
@@ -83,8 +78,6 @@ export const projects = [
     category: "Desktop",
     featured: true,
   },
-
-  // ── remaining projects (shown on "View All") ──────────────────────
   {
     title: "Head Office POS Maintenance System",
     description:
@@ -196,160 +189,125 @@ export const education = {
   period: "2022 – Present",
 };
 
-export const achievements = [
-  { icon: "🏆", title: "President's Lister", period: "Multiple Semesters" },
-  { icon: "🥇", title: "Top 1 Performer in the Department", period: "SY 2024–2025" },
-  { icon: "⭐", title: "Rank 9 Overall in the College", period: "SY 2024–2025" },
-  { icon: "🥉", title: "Top 3 Performer in the Department", period: "SY 2022–2023" },
-  { icon: "🎖️", title: "Overall Best Project", period: "SY 2021–2022" },
-  { icon: "🎖️", title: "Best Project for Community Extension", period: "SY 2021–2022" },
-  { icon: "🎖️", title: "Best in System & Best Presenter", period: "SY 2021–2022" },
-  { icon: "🎖️", title: "Best in Research Paper", period: "SY 2021–2022" },
-];
-
 export const softSkills = [
   "Problem-Solving", "Team Collaboration", "Adaptability",
   "Initiative", "Critical Thinking", "Accountability", "Self-directed Learning",
 ];
 
-// featured: true = shown by default; false = shown on "view all"
+// images: array — if multiple, lightbox shows them side by side
+// featured: true = shown by default
 export const certificates = [
   {
     title: "Rank 9 Overall in the College",
     period: "SY 2024–2025",
-    image: "/certificates/overallrank9.jpeg",
+    images: ["/certificates/overallrank9.jpeg"],
     featured: true,
   },
   {
     title: "4th Place — CodeChum National Programming Challenge 2025, Season 2",
     period: "2025",
-    image: "/certificates/4th Place — CodeChum National Programming Challenge 2025, Season 2.png",
+    images: ["/certificates/4th Place — CodeChum National Programming Challenge 2025, Season 2.png"],
     featured: true,
   },
   {
     title: "Top 1 Performer in the Department",
     period: "SY 2024–2025",
-    image: "/certificates/seclstop1.jpeg",
+    images: ["/certificates/seclstop1.jpeg"],
     featured: true,
   },
   {
     title: "Top 3 Performer in the Department",
     period: "SY 2022–2023",
-    image: "/certificates/top3bestperformerindepartment.jpeg",
+    images: ["/certificates/top3bestperformerindepartment.jpeg"],
     featured: true,
   },
   {
     title: "Overall Best Project",
     period: "SY 2021–2022",
-    image: "/certificates/overallbestproject.jpeg",
+    images: ["/certificates/overallbestproject.jpeg"],
     featured: true,
   },
   {
     title: "Best Project for Community Extension",
     period: "SY 2021–2022",
-    image: "/certificates/bestprojectforcommunityextension.jpeg",
+    images: ["/certificates/bestprojectforcommunityextension.jpeg"],
     featured: false,
   },
   {
     title: "Best in System",
     period: "SY 2021–2022",
-    image: "/certificates/bestinsystem.jpeg",
+    images: ["/certificates/bestinsystem.jpeg"],
     featured: false,
   },
   {
     title: "Best Presenter",
     period: "SY 2021–2022",
-    image: "/certificates/bestpresenter.jpeg",
+    images: ["/certificates/bestpresenter.jpeg"],
     featured: false,
   },
   {
     title: "Best in Research Paper",
     period: "SY 2021–2022",
-    image: "/certificates/bestinresearchpaper.jpeg",
+    images: ["/certificates/bestinresearchpaper.jpeg"],
     featured: false,
   },
   {
     title: "President's Lister — 2023–2024, 1st Sem",
     period: "2023–2024",
-    image: "/certificates/pl2023-2024firstsem.jpeg",
+    images: ["/certificates/pl2023-2024firstsem.jpeg"],
     featured: false,
   },
   {
     title: "President's Lister — 2023–2024, 2nd Sem",
     period: "2023–2024",
-    image: "/certificates/pl2023-2024secondsem.jpeg",
+    images: ["/certificates/pl2023-2024secondsem.jpeg"],
     featured: false,
   },
   {
     title: "President's Lister — 2024–2025, 1st Sem",
     period: "2024–2025",
-    image: "/certificates/pl2024-2025firstsem.jpeg",
-    featured: false,
-  },
-  {
-    title: "President's Lister — 2024–2025, 1st Sem (v2)",
-    period: "2024–2025",
-    image: "/certificates/pl2024-2025firstsemv2.jpeg",
+    // two certificates for same award — shown side by side in lightbox
+    images: [
+      "/certificates/pl2024-2025firstsem.jpeg",
+      "/certificates/pl2024-2025firstsemv2.jpeg",
+    ],
     featured: false,
   },
   {
     title: "President's Lister — 2024–2025, 2nd Sem",
     period: "2024–2025",
-    image: "/certificates/pl2024-2025secondsem.jpeg",
-    featured: false,
-  },
-  {
-    title: "President's Lister — 2024–2025, 2nd Sem (v2)",
-    period: "2024–2025",
-    image: "/certificates/pl2024-2025secondsemv2.jpeg",
+    images: [
+      "/certificates/pl2024-2025secondsem.jpeg",
+      "/certificates/pl2024-2025secondsemv2.jpeg",
+    ],
     featured: false,
   },
   {
     title: "Certificate of Recognition — Embracing the Light of Innovation",
     period: "2024",
-    image: "/certificates/cerofrecog_embracingthelightofinnovation.jpeg",
+    images: ["/certificates/cerofrecog_embracingthelightofinnovation.jpeg"],
     featured: false,
   },
 ];
 
 export const chatbotContext = `
-You are JC Dizon's portfolio assistant. Answer questions about JC briefly and professionally.
+You are JC Dizon himself. Respond in first person as JC — friendly, casual but professional, like a real developer chatting. Use "I", "my", "me".
 
-About JC:
-- Full name: John Carlo Victoria Dizon (goes by "JC")
-- Junior Developer specializing in Web, Mobile, and Desktop development
-- Location: Pampanga, Philippines
-- Available for work/opportunities
-- Email: johncarlovdizon@gmail.com
+About me:
+- I'm John Carlo Victoria Dizon, goes by JC
+- Junior Developer: Web, Mobile, Desktop — Pampanga, Philippines
+- Open to work and new opportunities
+- Email: johncarlovictoriadizon@gmail.com
 
-Education:
-- BS Information Technology at Holy Cross College, Sta. Ana, Pampanga (2022–Present)
-- Top 1 Performer in the Department (SY 2024–2025)
-- Consistent President's Lister
-- Rank 9 Overall in the College (SY 2024–2025)
+My forte: Java, Flutter, Laravel, Next.js, Node.js, TypeScript, Git/GitHub, Postman
 
-Experience:
-- Desktop App Developer (Intern) at BMware Business Solutions (Dec 2025 – Mar 2026)
-  Built attendance system with biometric LAN, maintained HR & payroll system, developed POS system, maintained Kids Cancervive blood donation app
-- Full Stack Developer (Academic) at Holy Cross College (2022–Present)
-  Built research management capstone, SyncSpace collaboration app, 5 Flutter mobile apps, clinic management system
+Tech I work with: React, Next.js, TypeScript, JavaScript, PHP, Java Swing, Node.js, Laravel, CodeIgniter 4, Spring Boot, Flutter, Dart, MySQL, PostgreSQL, Supabase, Docker, Vercel
 
-Tech Stack (Forte): Java, Flutter, Laravel, Next.js, Node.js, TypeScript, Git/GitHub, Postman
-Full Stack: React, Next.js, TypeScript, JavaScript, PHP, Java Swing, Node.js, Laravel, CodeIgniter 4, Spring Boot, Flutter, Dart
-Database & DevOps: MySQL, PostgreSQL, Supabase, Docker, Vercel, Git, Postman
+My projects: Intern Attendance System (biometrics/LAN), HR & Payroll System, POS System, SyncSpace (Next.js+Supabase), Research Management System (Laravel), Clinic System, 5 Flutter apps
 
-Key Projects:
-- Intern Attendance Management System (Java Swing + PostgreSQL + Biometrics/LAN)
-- HR, Timekeeping & Payroll System (Java Swing + PostgreSQL)
-- Head Office POS Maintenance System (Java Swing + PostgreSQL)
-- Kids Cancervive Blood Donation Management (Java Swing + PostgreSQL)
-- SyncSpace workspace collaboration (Next.js + Supabase + Docker + Vercel)
-- Research Management & Title Verification (Laravel + MySQL)
-- Clinic Management System (Laravel + MySQL)
-- Point of Sale System (PHP + MySQL)
-- Flutter Mobile Suite — 5 apps (Ordering, Recipe, Note, Contacts, Quote)
+Experience: Interned at BMware Business Solutions (Dec 2025–Mar 2026) building real enterprise systems. Academic full-stack dev at Holy Cross College (2022–Present).
 
-Achievements: President's Lister, Top 1 in Department, Rank 9 in College, Overall Best Project, Best Project for Community Extension, Best in System, Best Presenter, Best in Research Paper, 4th Place CodeChum National Programming Challenge 2025 Season 2
+Education: BS Information Technology, Holy Cross College — Top 1 in Department, President's Lister, Rank 9 overall, 4th Place CodeChum National Programming Challenge 2025 Season 2.
 
-Keep answers concise (2-4 sentences max). Be friendly and professional. If asked about hiring or contact, direct them to use the contact form on the page or email johncarlovictoriadizon@gmail.com.
+Keep replies short and conversational (2-4 sentences). Sound like a real person, not a bot. For hiring or contact, say to use the contact form or email me at johncarlovictoriadizon@gmail.com.
 `;
