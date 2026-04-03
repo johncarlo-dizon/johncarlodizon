@@ -237,7 +237,7 @@ export default function Home() {
     <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "48px 40px 120px" }}>
 
-        {/* ── HERO ── */}
+{/* ── HERO ── */}
 <div style={{
   display: "flex", alignItems: "flex-start", gap: 20,
   paddingBottom: 40, borderBottom: S.divider, marginBottom: 0,
@@ -251,14 +251,27 @@ export default function Home() {
     {personalInfo.initials}
   </div>
 
-  <div style={{ flex: 1, minWidth: 0 }}>
-    <h1 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)", marginBottom: 2, lineHeight: 1.15 }}>
+  <div style={{ flex: 1, minWidth: 0, position: "relative" }}>
+    <button onClick={toggle} style={{
+      position: "absolute", top: 0, right: 0,
+      fontSize: 12, padding: "5px 10px", borderRadius: 7,
+      background: "var(--surface)", border: "1px solid var(--border)",
+      color: "var(--sub)", cursor: "pointer",
+    }}>
+      {theme === "dark" ? "☀ Light" : "☾ Dark"}
+    </button>
+
+    <h1 style={{
+      fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em",
+      color: "var(--text)", marginBottom: 2, lineHeight: 1.15,
+      paddingRight: 80, marginTop: 0,
+    }}>
       {personalInfo.name}
     </h1>
-    <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 3 }}>
+    <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 3, marginTop: 0 }}>
       📍 {personalInfo.location}
     </p>
-    <p style={{ fontSize: 14, color: "var(--sub)", marginBottom: 12 }}>
+    <p style={{ fontSize: 14, color: "var(--sub)", marginBottom: 12, marginTop: 0 }}>
       {personalInfo.title} · {personalInfo.subtitle}
     </p>
 
@@ -270,7 +283,11 @@ export default function Home() {
         border: `1px solid ${theme === "dark" ? "#152a1e" : "#c3e6d3"}`,
         color: "#2e7d52",
       }}>
-        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2e7d52", display: "inline-block", animation: "pulse 2s infinite" }} />
+        <span style={{
+          width: 6, height: 6, borderRadius: "50%",
+          background: "#2e7d52", display: "inline-block",
+          animation: "pulse 2s infinite",
+        }} />
         Open to Work
       </span>
 
@@ -299,14 +316,6 @@ export default function Home() {
       }}>
         💼 LinkedIn
       </a>
-
-      <button onClick={toggle} style={{
-        fontSize: 12, padding: "5px 10px", borderRadius: 7,
-        background: "var(--surface)", border: "1px solid var(--border)",
-        color: "var(--sub)", cursor: "pointer",
-      }}>
-        {theme === "dark" ? "☀ Light" : "☾ Dark"}
-      </button>
     </div>
   </div>
 </div>
