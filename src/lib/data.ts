@@ -6,7 +6,7 @@ export const personalInfo = {
   subtitle: "Web · Mobile · Desktop",
   tagline: "Building scalable web apps and mobile experiences — from backend APIs to Play Store deployments.",
   location: "Pampanga, Philippines",
-  email: "johncarlovictoriadizon@gmail.com",
+  email: "johncarlovdizon@gmail.com",
   github: "https://github.com/johncarlo-dizon",
   linkedin: "https://linkedin.com/in/jcdizon",
   portfolio: "https://jc-portfolio-orpin.vercel.app/",
