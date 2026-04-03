@@ -19,7 +19,7 @@ export const personalInfo = {
 };
 
 export const forteItems = [
-  "Java", "Flutter", "Laravel", "Next.js", "Node.js", "Git / GitHub", "TypeScript", "Postman",
+  "Java", "Flutter", "Laravel", "Next.js", "Node.js", "Git / GitHub", "TypeScript", "Postman","MySQL", "PostgreSQL"
 ];
 
 export const skills = [
