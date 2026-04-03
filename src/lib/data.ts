@@ -166,20 +166,7 @@ export const experience = [
       "Developed a Head Office POS Maintenance System for point-of-sale management at the company head office.",
     ],
   },
-  {
-    role: "Full Stack Developer (Academic Projects)",
-    company: "Holy Cross College",
-    type: "Academic",
-    period: "2022 – Present",
-    location: "Sta. Ana, Pampanga",
-    points: [
-      "Built a Research Management and Title Verification System (Capstone) with plagiarism detection using Laravel and RESTful APIs.",
-      "Developed a Clinic Management System for the school health clinic using Laravel and MySQL.",
-      "Built SyncSpace, a workspace collaboration system with Kanban board using Next.js, Supabase, Docker, and Vercel.",
-      "Created multiple Flutter mobile apps (Ordering, Recipe, Note, Contacts, Quote) with PHP REST API backends.",
-      "Developed a Bloodletting and Blood Donation Management System using Java Swing for community health drives.",
-    ],
-  },
+ 
 ];
 
 export const education = {
