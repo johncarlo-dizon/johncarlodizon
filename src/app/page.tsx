@@ -466,7 +466,7 @@ export default function Home() {
             boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
           }}
         >
-          💬 Ask JC&apos;s AI
+          💬 Ask JC
         </button>
       )}
 

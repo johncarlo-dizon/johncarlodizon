@@ -13,8 +13,11 @@ export const personalInfo = {
   available: true,
   about: [
     "I'm a junior developer specializing in building scalable web apps, mobile experiences, and desktop systems — from backend APIs to Play Store deployments. I work on full-stack web, cross-platform mobile, and biometric-integrated enterprise systems.",
-    "I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used company-wide for HR, payroll, and attendance tracking.",
-    "Currently finishing my BS in Information Technology at Holy Cross College — recognized as Top 1 Performer in the Department and a consistent President's Lister.",
+
+"I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used for HR, payroll, and attendance tracking.",
+
+"Currently finishing my BS in Information Technology at Holy Cross College. I'm continuously learning and improving my skills, and I’m eager to grow as a developer while gaining more real-world experience."
+,
   ],
 };
 
@@ -42,7 +45,7 @@ export const skills = [
   },
   {
     category: "Tools",
-    items: ["Postman", "Git / GitHub", "VS Code", "Docker"],
+    items: ["Postman", "Git / GitHub", "VS Code", "Docker", "n8n"],
   },
 ];
 
@@ -227,19 +230,19 @@ export const certificates = [
     title: "Top 1 Performer in the Department",
     period: "SY 2024–2025",
     image: "/certificates/seclstop1.jpeg",
-    featured: false,
+    featured: true,
   },
   {
     title: "Top 3 Performer in the Department",
     period: "SY 2022–2023",
     image: "/certificates/top3bestperformerindepartment.jpeg",
-    featured: false,
+    featured: true,
   },
   {
     title: "Overall Best Project",
     period: "SY 2021–2022",
     image: "/certificates/overallbestproject.jpeg",
-    featured: false,
+    featured: true,
   },
   {
     title: "Best Project for Community Extension",
@@ -317,7 +320,7 @@ About JC:
 - Junior Developer specializing in Web, Mobile, and Desktop development
 - Location: Pampanga, Philippines
 - Available for work/opportunities
-- Email: johncarlovictoriadizon@gmail.com
+- Email: johncarlovdizon@gmail.com
 
 Education:
 - BS Information Technology at Holy Cross College, Sta. Ana, Pampanga (2022–Present)
