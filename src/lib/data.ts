@@ -12,9 +12,9 @@ export const personalInfo = {
   portfolio: "https://johncarlodizon-silk.vercel.app/",
   available: true,
   about: [
-    "I'm a junior developer specializing in building scalable web apps, mobile experiences, and desktop systems — from backend APIs to Play Store deployments. I work on full-stack web, cross-platform mobile, and biometric-integrated enterprise systems.",
-    "I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used for HR, payroll, and attendance tracking.",
-    "Currently finishing my BS in Information Technology at Holy Cross College. I'm continuously learning and improving my skills, and I'm eager to grow as a developer while gaining more real-world experience.",
+  "I'm a junior developer specializing in building scalable web apps, mobile experiences, and desktop systems — from backend APIs to Play Store deployments. I work on full-stack web, cross-platform mobile, and biometric-integrated enterprise systems.",
+"I've contributed to real company workflows during my internship at BMware Business Solutions, building and maintaining systems used for HR, payroll, and attendance tracking.",
+"A fresh graduate of BS in Information Technology at Holy Cross College. I'm continuously learning and improving my skills, and I'm eager to grow as a developer while gaining more real-world experience.",
   ],
 };
 
