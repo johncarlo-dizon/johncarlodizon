@@ -19,17 +19,17 @@ export const personalInfo = {
 };
 
 export const forteItems = [
-  "Java", "Flutter", "Laravel", "Next.js", "Node.js", "Git / GitHub", "TypeScript", "Postman","MySQL", "PostgreSQL"
+  "Java", "Flutter", "Laravel", "React.js", "Node.js", "Git / GitHub", "Express.js", "Postman","MySQL","MongoDB","PostgreSQL","Tailwind CSS","Bootstrap"
 ];
 
 export const skills = [
   {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "PHP (native)", "Java Swing"],
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "PHP (native)", "Java Swing","Tailwind CSS", "Bootstrap"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot"],
+    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot","Express.js", "REST API Development"],
   },
   {
     category: "Mobile",
@@ -37,7 +37,7 @@ export const skills = [
   },
   {
     category: "DevOps & Database",
-    items: ["MySQL", "PostgreSQL", "Supabase", "Docker", "Vercel", "Git / GitHub"],
+    items: ["MySQL", "PostgreSQL", "MongoDB", "Supabase", "Docker", "Vercel", "Git / GitHub"],
   },
   {
     category: "Tools",
