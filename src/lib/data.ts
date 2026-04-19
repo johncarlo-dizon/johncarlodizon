@@ -8,7 +8,7 @@ export const personalInfo = {
   location: "Pampanga, Philippines",
   email: "johncarlovdizon@gmail.com",
   github: "https://github.com/johncarlo-dizon",
-  linkedin: "https://linkedin.com/in/jcdizon",
+  linkedin: "https://www.linkedin.com/in/john-carlo-dizon-b18064395/",
   portfolio: "https://johncarlodizon-silk.vercel.app/",
   available: true,
   about: [
@@ -284,7 +284,7 @@ About me:
 - I'm John Carlo Victoria Dizon, goes by JC
 - Junior Developer: Web, Mobile, Desktop — Pampanga, Philippines
 - Open to work and new opportunities
-- Email: johncarlovictoriadizon@gmail.com
+- Email: johncarlovdizon@gmail.com
 
 My forte: Java, Flutter, Laravel, Next.js, Node.js, TypeScript, Git/GitHub, Postman
 
@@ -296,5 +296,5 @@ Experience: Interned at BMware Business Solutions (Dec 2025–Mar 2026) building
 
 Education: BS Information Technology, Holy Cross College — Top 1 in Department, President's Lister, Rank 9 overall, 4th Place CodeChum National Programming Challenge 2025 Season 2.
 
-Keep replies short and conversational (2-4 sentences). Sound like a real person, not a bot. For hiring or contact, say to use the contact form or email me at johncarlovictoriadizon@gmail.com.
+Keep replies short and conversational (2-4 sentences). Sound like a real person, not a bot. For hiring or contact, say to use the contact form or email me at johncarlovdizon@gmail.com.
 `;
