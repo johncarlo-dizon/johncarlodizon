@@ -19,17 +19,17 @@ export const personalInfo = {
 };
 
 export const forteItems = [
-  "Java", "Flutter", "Laravel", "React.js", "Node.js", "Git / GitHub", "Express.js", "Postman","MySQL","MongoDB","PostgreSQL","Tailwind CSS","Bootstrap"
+  "Java", "Flutter", "Laravel", "React.js", "Node.js", "Git / GitHub", "Express.js", "Postman", "MySQL", "MongoDB", "PostgreSQL", "Tailwind CSS", "Bootstrap","PHP (native)","CodeIgniter 4"
 ];
 
 export const skills = [
   {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "PHP (native)", "Java Swing","Tailwind CSS", "Bootstrap"],
+    items: ["React.js", "Next.js", "TypeScript", "JavaScript", "PHP (native)", "Java Swing", "Tailwind CSS", "Bootstrap"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot","Express.js", "REST API Development"],
+    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot", "Express.js", "REST API Development"],
   },
   {
     category: "Mobile",
@@ -37,11 +37,11 @@ export const skills = [
   },
   {
     category: "DevOps & Database",
-    items: ["MySQL", "PostgreSQL", "MongoDB", "Supabase", "Docker", "Vercel", "Git / GitHub"],
+    items: ["MySQL", "PostgreSQL", "MongoDB", "Supabase", "Docker", "Vercel"],
   },
   {
     category: "Tools",
-    items: ["Postman", "Git / GitHub", "VS Code", "Docker", "n8n"],
+    items: ["Postman", "Git / GitHub", "n8n"],
   },
 ];
 
