@@ -19,7 +19,7 @@ export const personalInfo = {
 };
 
 export const forteItems = [
-  "Java", "Flutter", "Laravel", "React.js", "Node.js", "Git / GitHub", "Express.js", "Postman", "MySQL", "MongoDB", "PostgreSQL", "Tailwind CSS", "Bootstrap","PHP (native)","CodeIgniter 4"
+  "Java", "Flutter", "Laravel", "React.js", "Node.js", "Git / GitHub", "Express.js", "Postman", "MySQL", "MongoDB", "PostgreSQL", "Tailwind CSS", "Bootstrap","PHP (native)","CodeIgniter 4","Java"
 ];
 
 export const skills = [
@@ -29,7 +29,7 @@ export const skills = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot", "Express.js", "REST API Development"],
+    items: ["Node.js", "Laravel", "CodeIgniter 4", "Spring Boot", "Express.js", "REST API Development","Java"],
   },
   {
     category: "Mobile",
