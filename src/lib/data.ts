@@ -185,6 +185,18 @@ export const softSkills = [
 // featured: true = shown by default
 export const certificates = [
   {
+    title: "Best in Capstone Project — Holy Cross College (SY 2025–2026)",
+    period: "SY 2026–2026",
+    images: ["/certificates/bestincapstone.jpg"],
+    featured: true,
+  },
+    {
+    title: "2nd Best Paper Award — SCITE Student Research Colloquium 2026",
+    period: "SY 2025–2026",
+    images: ["/certificates/secondbestpaper.jpeg"],
+    featured: true,
+  },
+  {
     title: "Rank 9 Overall in the College",
     period: "SY 2024–2025",
     images: ["/certificates/overallrank9.jpeg"],
@@ -294,7 +306,7 @@ My projects: Intern Attendance System (biometrics/LAN), HR & Payroll System, POS
 
 Experience: Interned at BMware Business Solutions (Dec 2025–Mar 2026) building real enterprise systems. Academic full-stack dev at Holy Cross College (2022–Present).
 
-Education: BS Information Technology, Holy Cross College — Top 1 in Department, President's Lister, Rank 9 overall, 4th Place CodeChum National Programming Challenge 2025 Season 2.
+Education: BS Information Technology, Holy Cross College — Best in Capstone Project, 2nd Best Paper Award in SCITE Student Research Colloquium 2026, Top 1 in Department, President's Lister, Rank 9 overall, 4th Place CodeChum National Programming Challenge 2025 Season 2.
 
 Keep replies short and conversational (2-4 sentences). Sound like a real person, not a bot. For hiring or contact, say to use the contact form or email me at johncarlovdizon@gmail.com.
 `;
