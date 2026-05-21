@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "JC Dizon — Junior Developer",
+  title: "John Carlo Dizon - Portfolio",
   description: "Junior Developer specializing in Web, Mobile & Desktop",
 };
 
