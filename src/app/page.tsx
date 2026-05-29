@@ -243,13 +243,15 @@ export default function Home() {
   paddingBottom: 40, borderBottom: S.divider, marginBottom: 0,
   flexWrap: "wrap",
 }}>
-  <div style={{
+  <img
+  src="/avatar.png"
+  alt={personalInfo.name}
+  style={{
     width: 80, height: 80, borderRadius: 10, flexShrink: 0,
-    background: "#111", display: "flex", alignItems: "center",
-    justifyContent: "center", fontSize: 24, fontWeight: 700, color: "#fff",
-  }}>
-    {personalInfo.initials}
-  </div>
+    objectFit: "cover", objectPosition: "center top",
+    border: "1px solid var(--border)",
+  }}
+/>
 
   <div style={{ flex: 1, minWidth: 0, position: "relative" }}>
     <button onClick={toggle} style={{
