@@ -30,6 +30,8 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
+
+
 function TechStack({
   skills,
   forteItems,
@@ -90,6 +92,8 @@ function TechStack({
     </div>
   );
 }
+
+
 
 function AchievementsSection() {
   const [showAll, setShowAll]         = useState(false);
@@ -224,7 +228,100 @@ function AchievementsSection() {
     </section>
   );
 }
+ 
 
+
+function LiveAppPreview({
+  url,
+  label,
+  displayUrl,
+  description,
+}: {
+  url: string;
+  label: string;
+  displayUrl: string;
+  description: string;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    
+      <a href={url}
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        display: "block", textDecoration: "none",
+        border: "1px solid var(--border)", borderRadius: 10,
+        overflow: "hidden", marginBottom: 16,
+        background: "var(--surface)",
+        boxShadow: hovered ? "0 6px 24px rgba(0,0,0,0.10)" : "none",
+        transform: hovered ? "translateY(-1px)" : "none",
+        transition: "all 0.2s",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div style={{
+        display: "flex", alignItems: "center", gap: 6,
+        padding: "8px 10px", borderBottom: S.divider,
+        background: "var(--bg)",
+      }}>
+        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff5f56" }} />
+        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#ffbd2e" }} />
+        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#27c93f" }} />
+        <span style={{
+          fontSize: 10, color: "var(--dim)", marginLeft: 6,
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>
+          {displayUrl}
+        </span>
+      </div>
+
+      <div style={{ position: "relative", width: "100%", height: 150, overflow: "hidden", background: "var(--bg)" }}>
+        <iframe
+          src={url}
+          title={`Live preview of ${label}`}
+          scrolling="no"
+          loading="lazy"
+          style={{
+            width: "250%", height: "250%",
+            border: "none",
+            transform: "scale(0.4)",
+            transformOrigin: "top left",
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: hovered ? "rgba(0,0,0,0.04)" : "transparent",
+          transition: "background 0.2s",
+        }} />
+        <span style={{
+          position: "absolute", top: 8, right: 8,
+          display: "inline-flex", alignItems: "center", gap: 4,
+          fontSize: 10, fontWeight: 600, padding: "3px 8px", borderRadius: 20,
+          background: "#0c1f17", color: "#4ade80", border: "1px solid #152a1e",
+        }}>
+          <span style={{
+            width: 5, height: 5, borderRadius: "50%", background: "#4ade80",
+            display: "inline-block", animation: "pulse 2s infinite",
+          }} />
+          LIVE
+        </span>
+      </div>
+
+      <div style={{ padding: "10px 12px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", margin: 0 }}>{label}</p>
+          <span style={{ fontSize: 11, color: "var(--dim)", flexShrink: 0 }}>↗</span>
+        </div>
+        <p style={{ fontSize: 11.5, color: "var(--muted)", margin: "3px 0 0 0", lineHeight: 1.4 }}>
+          {description}
+        </p>
+      </div>
+    </a>
+  );
+}
 export default function Home() {
   const { theme, toggle } = useTheme();
   const [contactOpen, setContactOpen] = useState(false);
@@ -404,6 +501,18 @@ export default function Home() {
           {/* ── SIDEBAR ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
 
+{/* LIVE PREVIEW */}
+<section>
+  <SectionTitle>Live Projects</SectionTitle>
+  <LiveAppPreview
+    url="https://umbra-gules-tau.vercel.app"
+    displayUrl="umbra-gules-tau.vercel.app"
+    label="Umbra"
+    description="A hub of my projects — click to explore"
+  />
+</section>
+
+ 
             {/* EXPERIENCE */}
             <section>
               <SectionTitle>Experience</SectionTitle>
